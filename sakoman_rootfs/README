@@ -1,0 +1,3 @@
+The files under this folder is from sakoman Inc.
+Because ubuntu root-stock build system does not provide modules for devices
+sakoman's build is required for wireless network driver.
