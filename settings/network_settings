@@ -1,0 +1,28 @@
+Add following thing to /etc/network/interfaces
+
+auto wlan0
+allow-hotplug wlan0
+iface wlan0 inet dhcp
+pre-up wpa_supplicant -Dwext -iwlan0 -c/etc/wpa_supplicant.conf -B
+down killall wpa_supplicant
+
+And for the iPhone tethering, use following wpa_supplicant.conf
+
+ubuntu@gumstix-overo:/etc$ cat wpa_supplicant.conf 
+ctrl_interface=/var/run/wpa_supplicant
+ctrl_interface_group=0
+eapol_version=1
+ap_scan=1
+fast_reauth=1
+network={
+ssid="hyoni4s"
+proto=RSN
+key_mgmt=WPA-PSK
+pairwise=CCMP TKIP
+group=CCMP TKIP
+scan_ssid=1
+psk="deadbeef"
+priority=10
+}
+ubuntu@gumstix-overo:/etc$
+
